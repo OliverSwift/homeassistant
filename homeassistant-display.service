@@ -4,7 +4,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/xinit /usr/bin/su - -c "env DISPLAY=:0 /usr/bin/chromium --kiosk --window-position=0,0 --window-size=480,1920 http://homeassistant.home:8123" homeassistant -- :0 vt1 -ac -keeptty -nolisten tcp -nocursor -novtswitch
+ExecStart=/usr/bin/xinit /usr/bin/su - -c "env DISPLAY=:0 /usr/bin/chromium --kiosk --window-position=0,0 --window-size=480,1920 http://localhost:8123" homeassistant -- :0 vt1 -ac -keeptty -nolisten tcp -nocursor -novtswitch
 Restart=always
 RestartSec=2
 

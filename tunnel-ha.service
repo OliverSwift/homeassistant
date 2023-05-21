@@ -4,9 +4,7 @@ After=network-online.target
 
 [Service]
 User=homeassistant
-Group=homeassistant
-WorkingDirectory=/opt/homeassistant
-ExecStart=ssh -R9000:127.0.0.1:8123 -n -N ha@debon.org
+ExecStart=ssh -R9000:127.0.0.1:8123 -n -N ha@example.net
 Restart=always
 
 [Install]
