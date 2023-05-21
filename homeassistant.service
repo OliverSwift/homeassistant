@@ -1,0 +1,13 @@
+[Unit]
+Description=Home Asssistant Server
+After=network.target
+
+[Service]
+User=homeassistant
+Group=homeassistant
+WorkingDirectory=/opt/homeassistant
+ExecStart=/opt/homeassistant/service.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

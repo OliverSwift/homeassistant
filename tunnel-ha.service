@@ -1,0 +1,13 @@
+[Unit]
+Description=Tunnel Between VPS and HA server
+After=network-online.target
+
+[Service]
+User=homeassistant
+Group=homeassistant
+WorkingDirectory=/opt/homeassistant
+ExecStart=ssh -R9000:127.0.0.1:8123 -n -N ha@debon.org
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
