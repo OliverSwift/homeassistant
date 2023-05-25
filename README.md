@@ -175,7 +175,7 @@ Apache config on VPS:
 	RewriteRule ^/?(.*) "ws://127.0.0.1:9000/$1" [P,L]
 
 	ProxyPass / http://127.0.0.1:9000/
-	ProxyPassReverse / "http://127.0.0.1:9000/
+	ProxyPassReverse / http://127.0.0.1:9000/
 	ProxyRequests Off
 
         SSLCertificateFile /etc/letsencrypt/live/example.net/fullchain.pem
