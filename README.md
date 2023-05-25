@@ -8,8 +8,8 @@ I didn't choose Raspberry PI (current prices are above small PC ones). But this 
 
 | Designation | Description | Buy link / Price | Comment |
 | ----------- | ----------- | ---------------- | ------- |
-| SBC         | BMAX        | [Amazon](https://www.amazon.fr/Windows-N4020C-Desktop-Computer-Dual-Band/dp/B09YTRWJQM) (109€) | RJ45, 2 USB3, HDMI, audio jack |
-| Zigbee HUB  | Conbee II   | [Amazon](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5) (30€)| Any other HUB should as long as Zigpy supports it|
+| SBC         | BMAX        | [Amazon](https://www.amazon.fr/Windows-N4020C-Desktop-Computer-Dual-Band/dp/B09YTRWJQM) (109€) | RJ45, 2xUSB3, HDMI, audio jack |
+| Zigbee HUB  | Conbee II   | [Amazon](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5) (30€)| Any other HUB should do as long as Zigpy supports it|
 | Display     | 8,8" IPS    | [Makerfabs](https://makerfabs.shop/products/makerfabs-8-8-inch-display-screen-1920-480-ips-screen-lcd-panel-hdmi-interface-driver-board) (60€) | 480x1920 60Hz Black frame and Capacitive Touch, used as HMI but somehow optional |
 
 
@@ -108,16 +108,21 @@ zha:
 With this nifty IPS 8.8" display I wanted to give the user the possibility to access `Home Assistant` directly without a PC or smartphone.
 The idea here is to run `chromium` in kiosk mode. The kiosk mode makes `chromium` run in fullscreen mode so making the impression of running a entire application on the screen.
 
-There are many complicated setups to achieve this on Raspberry. Most rely on desktop management. Come on! This is not the way.
-I think some Linux users think to much the Windows way.
+There are many complicated setups to achieve this on Raspberry. Most rely on desktop management with autologin and autostart thingies. Come on! This is not the way.
+I think some Linux users think to much the Windows way. It's to understand what you're doing.
 
-Anyway. You just need start a X11 session with `chromium` as the unique X11 running application. Stop any desktop management, by default it's Lightdm.
-Get the console and just log in as `homeassistant` user:
+You just need start a X11 session with `chromium` as the unique X11 running application.
+
+Disable any desktop management if installed, by default it's lightdm.
+``` bash
+$ sudo systemctl disable lightdm.service
+```
+You should get the console, just log in as `homeassistant` user. Then:
 ``` bash
 $ xinit /usr/bin/chromium --kiosk --window-position=0,0 --window-size=480,1920 http://localhost:8123" -- :0 vt1 -ac -keeptty -nolisten tcp -nocursor -novtswitch
 ```
 
-And tada, display switches to a nice fullscreen with Home Assistant home page displayed. Log in with HA user and password (yeah you need a keyboard for that). That's it:
+And tada, display switches to a nice fullscreen with Home Assistant home page displayed. Log in with HA user and password, don't forget to check *Stay connected* option. You need a keyboard for that, temporarely. That's it:
 
 ![HMI](images/HMI.jpg)
 
@@ -131,18 +136,30 @@ So the final start line is a tiny bit more complicated. But it's all in the [`ho
 ---
 
 ## Reverse Proxying from VPS
-The idea is to create a ssh tunnel from home server to VPS. No incoming connection on home gateway.
-Any connection on VPS's 9000 tcp port is forwarded to local HA server's usual 8123 port.
-Need a non privileged account on VPS (ha with no login at all).
-Install local ha server's homeassistant ssh public key on VPS.
+If you have your own server and you'd like to access your HA server from outside, here is a simple
+setup that doesn't need to open any ports on your ISP gateway.
+
+Let's target https://ha.example.net as the entry point to your HA server.
+
+The idea is to establish a ssh tunnel from home server to VPS. **No incoming connection** on home gateway.
+Need a non privileged account on VPS (here it's `ha` with no login at all).
+Install local HA server `homeassistant`'s ssh public key on VPS's `ha` user account.
 
 Running [`tunnel-ha.service`](tunnel-ha.service) on local server sets up the tunnel.
+
+It launches:
+``` bash
+$ ssh -R9000:127.0.0.1:8123 -n -N ha@example.net
+```
+
+Any connection on VPS's 9000 tcp port is forwarded to local HA server's usual 8123 port.
+You'll need the extra configuration lines in `configuration.yaml` (see above) to properly handle requests from proxy.
 
 Apache config on VPS:
 ``` apache
 <IfModule mod_ssl.c>
 <VirtualHost *:443>
-	ServerName ha.debon.org
+	ServerName ha.example.net
 
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/ha
@@ -161,9 +178,9 @@ Apache config on VPS:
 	ProxyPassReverse / "http://127.0.0.1:9000/
 	ProxyRequests Off
 
-SSLCertificateFile /etc/letsencrypt/live/debon.org/fullchain.pem
-SSLCertificateKeyFile /etc/letsencrypt/live/debon.org/privkey.pem
-Include /etc/letsencrypt/options-ssl-apache.conf
+        SSLCertificateFile /etc/letsencrypt/live/example.net/fullchain.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/example.net/privkey.pem
+        Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
 </IfModule>
 ```
