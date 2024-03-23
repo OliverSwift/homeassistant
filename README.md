@@ -10,7 +10,7 @@ I didn't choose Raspberry PI (current prices are above small PC ones). But this 
 | ----------- | ----------- | ---------------- | ------- |
 | SBC         | BMAX        | [Amazon](https://www.amazon.fr/Windows-N4020C-Desktop-Computer-Dual-Band/dp/B09YTRWJQM) (109€) | RJ45, 2xUSB3, HDMI, audio jack |
 | Zigbee HUB  | Conbee II   | [Amazon](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5) (30€)| Any other HUB should do as long as Zigpy supports it|
-| Display     | 8,8" IPS    | [Makerfabs](https://makerfabs.shop/products/makerfabs-8-8-inch-display-screen-1920-480-ips-screen-lcd-panel-hdmi-interface-driver-board) (60€) | 480x1920 60Hz Black frame and Capacitive Touch, used as HMI but somehow optional |
+| Display     | 8,8" IPS    | [AliExpress](https://fr.aliexpress.com/item/1005005904068937.html) (72€) | 480x1920 60Hz Black frame and Capacitive Touch, used as HMI but somehow optional |
 
 
 ## Zigbee Accessories
@@ -109,7 +109,7 @@ With this nifty IPS 8.8" display I wanted to give the user the possibility to ac
 The idea here is to run `chromium` in kiosk mode. The kiosk mode makes `chromium` run in fullscreen mode so making the impression of running a entire application on the screen.
 
 There are many complicated setups to achieve this on Raspberry. Most rely on desktop management with autologin and autostart thingies. Come on! This is not the way.
-I think some Linux users think to much the Windows way. It's to understand what you're doing.
+I think some Linux users think to much the Windows way. It's important to understand what you're doing, isn't it?
 
 You just need start a X11 session with `chromium` as the unique X11 running application.
 
