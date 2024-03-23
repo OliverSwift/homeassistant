@@ -78,7 +78,7 @@ As root:
 # mkdir /opt/homeassistant
 # chown homeassistant:homeassistant /opt/homeassistant
 # sudo -i -u homeassistant
-homeassistant:/opt/homeassistant$ python3 -m venv .
+homeassistant:/opt/homeassistant$ python3.10 -m venv .
 homeassistant:/opt/homeassistant$ source bin/activate
 (homeassistant) homeassistant:/opt/homeassistant$ python3 -m pip install wheel
 (homeassistant) homeassistant:/opt/homeassistant$ pip3 install homeassistant==2023.5.4
