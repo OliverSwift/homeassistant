@@ -57,15 +57,15 @@ To properly access Conbee 2 USB adapter it is needed to include user to `dialout
 
 ### Home Assistant installation
 
-#### Python 3.10
-On Debian 11 you need to build Python3.10.xx. As root:
+#### Python 3.11
+On Debian 11 you need to build Python3.11.xx. As root:
 ``` bash
 # apt-get install build-essential gdb lcov pkg-config \
       libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev \
       libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev \
       lzma lzma-dev tk-dev uuid-dev zlib1g-dev
-# wget https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tgz
-# cd Python-3.10.11/
+# wget https://www.python.org/ftp/python/3.11.8/Python-3.11.8.tgz
+# cd Python-3.11.8/
 # ./configure --enable-optimizations
 # make -j
 # make altinstall
@@ -78,10 +78,10 @@ As root:
 # mkdir /opt/homeassistant
 # chown homeassistant:homeassistant /opt/homeassistant
 # sudo -i -u homeassistant
-homeassistant:/opt/homeassistant$ python3.10 -m venv .
+homeassistant:/opt/homeassistant$ python3.11 -m venv .
 homeassistant:/opt/homeassistant$ source bin/activate
 (homeassistant) homeassistant:/opt/homeassistant$ python3 -m pip install wheel
-(homeassistant) homeassistant:/opt/homeassistant$ pip3 install homeassistant==2023.5.4
+(homeassistant) homeassistant:/opt/homeassistant$ pip3 install homeassistant
 (homeassistant) homeassistant:/opt/homeassistant$ hass
 ```
 
