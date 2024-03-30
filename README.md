@@ -65,6 +65,7 @@ On Debian 11 you need to build Python3.11.xx. As root:
       libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev \
       lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 # wget https://www.python.org/ftp/python/3.11.8/Python-3.11.8.tgz
+# tar xf Python-3.11.8.tgz
 # cd Python-3.11.8/
 # ./configure --enable-optimizations
 # make -j
