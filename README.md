@@ -150,7 +150,7 @@ Running [`tunnel-ha.service`](tunnel-ha.service) on local server sets up the tun
 
 It launches:
 ``` bash
-$ ssh -R9000:127.0.0.1:8123 -n -N ha@example.net
+$ ssh -R9000:127.0.0.1:8123 -o ExitOnForwardFailure=yes -n -N ha@example.net
 ```
 
 Any connection on VPS's 9000 tcp port is forwarded to local HA server's usual 8123 port.
