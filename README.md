@@ -50,7 +50,7 @@ Instructions are [here](https://www.home-assistant.io/installation/linux#install
 
 Created a dedicated `homeassistant` unprivileged user (only fools run things as root).
 ```bash
-# useradd -m -s /in/bash homeassistant
+# useradd -m -s /bin/bash homeassistant
 # adduser homeassistant dialout
 ```
 To properly access Conbee 2 USB adapter it is needed to include user to `dialout` group.
