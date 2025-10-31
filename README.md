@@ -8,8 +8,8 @@ I didn't choose Raspberry PI (current prices are above small PC ones). But this 
 
 | Designation | Description | Buy link / Price | Comment |
 | ----------- | ----------- | ---------------- | ------- |
-| SBC         | BMAX        | [Amazon](https://www.amazon.fr/Windows-N4020C-Desktop-Computer-Dual-Band/dp/B09YTRWJQM) (109€) | RJ45, 2xUSB3, HDMI, audio jack |
-| Zigbee HUB  | Conbee II   | [Amazon](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5) (30€)| Any other HUB should do as long as Zigpy supports it|
+| SBC         | BMAX        | [BMax](https://www.bmaxit.com/MaxMini-B2-Pro-pd790447098.html) | RJ45, 2xUSB3, HDMI, audio jack |
+| Zigbee HUB  | Conbee II   | [Amazon](https://www.amazon.fr/Dresden-ConBee-Electronique-II/dp/B07PZ7ZHG5) (20€)| Any other HUB should do as long as Zigpy supports it|
 | Display     | 8,8" IPS    | [AliExpress](https://fr.aliexpress.com/item/1005005904068937.html) (72€) | 480x1920 60Hz Black frame and Capacitive Touch, used as HMI but somehow optional |
 
 
@@ -20,9 +20,9 @@ Proposed, tested, suggested and useful Zigbee stuff
 | Designation    | Description | Buy link / Price | Comment |
 | -------------- | ----------- | ---------------- | ------- |
 | LED Driver     | ~230V to =12V 15W | [Amazon](https://www.amazon.fr/dp/B09LCDPWXK) (11€) | Not Zigbee driven |
-| LEDs ribbon    | 3000K 12V White 5m cuttable | [Amazon](https://www.amazon.fr/dp/B09LCDPWX) (10€) | Cheap. Reeled |
-| Plugs          | EU ~230V 16A | [AliExpress](https://fr.aliexpress.com/item/1005002344798281.html?spm=a2g0o.order_list.order_list_main.47.176b5e5bJMNxYj) (~8€) | Not Tuya specific. Does switching and various electrical measurements. Zigbee router |
-| LED Dimmer     | MiBoxer @ Mi Light | [AliExpress](https://fr.aliexpress.com/item/1005005124890685.html) (15€) | Highly recommended |
+| LEDs ribbon    | 3000K 12V White 5m cuttable | ~10€ | Cheap. Reeled |
+| Plugs          | EU ~230V 16A | [AliExpress](https://fr.aliexpress.com/item/1005009487706825.html) (~6€) | Not Tuya specific. Does switching and various electrical measurements. Zigbee router |
+| LED Dimmer     | MiBoxer @ Mi Light | [AliExpress](https://fr.aliexpress.com/item/1005007553624005.html) (18€) | Highly recommended. All Miboxer controllers are very good |
 | Power Switch   | 16A 230V | [AliExpress](https://fr.aliexpress.com/item/1005003788240931.html?spm=a2g0o.order_list.order_list_main.26.176b5e5bJMNxYj) (5€) | Zigbee Switch possibly paired with switch. Can manage manual and zigbee control |
 | Power Meter    | Intensity measured with clamp | [AliExpress](https://fr.aliexpress.com/item/1005004948381800.html) (23€) | Used to measure instant consumption and also for summation statistics. ZhaQuirk needed |
 | Switches | MOES Scene switches 4 gang |  [AliExpress](https://fr.aliexpress.com/item/1005004986809020.html?spm=a2g0o.order_list.order_list_main.16.176b5e5bJMNxYj) (13€) | Not tested yet, CR2430 required |
